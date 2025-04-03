@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 from .config import Config
 from .models import Employee, db
-from .routes import orders, session
+from .routes import dashboard, orders, session
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -13,6 +13,7 @@ app = Flask(__name__, static_folder=os.path.join(basedir, "..", "static"))
 app.config.from_object(Config)
 app.register_blueprint(orders.bp)
 app.register_blueprint(session.bp)
+app.register_blueprint(dashboard.bp)
 
 # configure the application with SQLAlchemy
 db.init_app(app)

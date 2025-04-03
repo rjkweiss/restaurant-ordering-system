@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Add Items to Order #{{ order.id }}</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.menu_items.label }} <br>
+            {% for subfield in form.menu_items %}
+                <label>{{ subfield() }} {{ subfield.label.text }}</label>
+            {% endfor %}
+        </div>
+        <div>{{ form.submit() }}</div>
+    </form>
+    <br>
+    <a href="{{ url_for('orders.view_order', order_id=order.id) }}">Back to Order</a>
+
+{% endblock %}

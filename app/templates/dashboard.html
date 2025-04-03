@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="dashboard-section">
+        <div class="dashboard-header">
+            <h2>ASSIGN TABLE</h2>
+            <form method="post" class="dashboard-assign-form">
+                {{ form.hidden_tag() }}
+                {{ form.table_id(class="select-field") }}
+                {{form.employee_id(class="select-field")}}
+                {{ form.submit(class="button--primary") }}
+            </form>
+
+            <form method="post" action="{{ url_for('session.logout') }}">
+                <button type="submit" class="button--logout">Logout</button>
+            </form>
+        </div>
+
+        <hr>
+        <div class="dashboard-body">
+            <div class="table-section">
+                <h2>Your Open Orders</h2>
+                <table>
+                    <tr>
+                        <th>Table</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for order in open_orders %}
+                        <tr>
+                            <td>Table {{ order.table.number }}</td>
+                            <td>
+                                ${{ "%.2f"|format(order.details | sum(attribute="menu_item.price")) }}
+                            </td>
+                            <td class="order-actions">
+                                <form method="post" action="{{ url_for('orders.close_order', order_id=order.id) }}" style="display: inline;">
+                                    <button type="submit" class="button--compact">Close Table</button>
+                                </form>
+                                <button type="button" class="button--compact add-to-order-button" data-order-id="{{ order.id }}">Add To Order</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="menu-section">
+                <h2>MENU</h2>
+                <form id="menu-form" method="post" action="{{ url_for('dashboard.add_to_order') }}">
+                    {% for category, items in items_by_type.items() %}
+                    <div class="menu-group">
+                        <h3>{{ category }}</h3>
+                        <div class="menu-items">
+                            {% for item in items %}
+                                <label for="{{ item.name }}" class="menu-item">
+                                    <input type="checkbox" name="menu_items" id="{{ item.id }}" value="{{ item.id }}">
+                                    {{ item.name }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Hidden field updated by JS when a button is clicked -->
+                    <input type="hidden" name="order_id" id="selected-order-id">
+                </form>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <script>
+        document.querySelectorAll('.add-to-order-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const form = document.getElementById('menu-form');
+                const hiddenInput = document.getElementById('selected-order-id');
+                hiddenInput.value = button.dataset.orderId;
+                form.submit();
+            });
+        });
+    </script>
+{% endblock %}

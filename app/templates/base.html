@@ -7,15 +7,26 @@
         <title>Welcome to Order Up!</title>
         {% endif %}
         <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css')}}">
     </head>
     <body>
-        {% if not current_user.is_anonymous %}
-        <form method="post" action="{{ url_for('session.logout') }}" class="logout-button">
-            <button type="submit">Logout</button>
-        </form>
-        {% endif %}
-        {% block content %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        {% endwith %}
+        <!-- {% if not current_user.is_anonymous %}
+            <form method="post" action="{{ url_for('session.logout') }}" class="logout-button">
+                <button type="submit">Logout</button>
+            </form>
+        {% endif %} -->
 
+        {% block content %}
         {% endblock %}
     </body>
 </html>

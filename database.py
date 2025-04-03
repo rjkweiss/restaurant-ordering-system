@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from werkzeug.security import generate_password_hash
 
 load_dotenv()
 
@@ -18,9 +19,21 @@ with app.app_context():
     db.create_all()
 
     # Employees
-    alice = Employee(name='Alice Johnson', employee_number=101)
-    bob = Employee(name='Bob Smith', employee_id=102)
-    clara = Employee(name='Clara Lopez', employee_id=103)
+    alice = Employee(
+        name='Alice Johnson',
+        employee_number=101,
+        hashed_password=generate_password_hash("alicepass")
+    )
+    bob = Employee(
+        name='Bob Smith',
+        employee_number=102,
+        hashed_password=generate_password_hash('bobpass')
+    )
+    clara = Employee(
+        name='Clara Lopez',
+        employee_number=103,
+        hashed_password=generate_password_hash('clarapass')
+    )
 
     db.session.add_all([alice, bob, clara])
 

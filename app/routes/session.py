@@ -28,7 +28,7 @@ def login():
         login_user(employee)
 
         # once user has been logged in, redirect to homepage
-        return redirect(url_for("orders.index"))
+        return redirect(url_for("dashboard.index"))
 
     # render the login form
     return render_template("login.html", form=form)

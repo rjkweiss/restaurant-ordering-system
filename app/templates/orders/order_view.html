@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Order #{{ order.id }}</h1>
+<p><strong>Table:</strong> {{ order.table.number }}</p>
+<p><strong>Server:</strong> {{ order.employee.name }}</p>
+<p><strong>Status:</strong>{{ "Closed" if order.finished else "Open" }}</p>
+
+<h2>Items</h2>
+{% if order.details %}
+<ul>
+    {% for detail in order.details %}
+    <li>{{ detail.menu_item.name }} - ${{ "%.2f"|format(detail.menu_item.price) }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No items yet.</p>
+{% endif %}
+
+{% if not order.finished %}
+<a href="{{ url_for('orders.add_items', order_id=order.id) }}">Add Food Item</a> <br>
+<form method="post" action="{{ url_for('orders.close_order', order_id=order.id)}}">
+    <button type="submit">Close Order</button>
+</form>
+{% endif %}
+
+{% endblock %}
