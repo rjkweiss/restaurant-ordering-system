@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Assign Employee to Table</h1>
+<form action="" method="post">
+    {{ form.csrf_token() }}
+
+    <div>
+        {{ form.employee_id.label }} {{ form.employee_id() }}
+    </div>
+    <div>
+        {{ form.table_id.label }} {{ form.table_id() }}
+    </div>
+
+    <div>{{ form.submit() }}</div>
+
+</form>
+{% endblock %}
