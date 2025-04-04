@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h2>Citrine Fine Dining</h2>
+            <h2>Receipt</h2>
+            <p><strong>Server: </strong>{{ server.name }}</p>
+            <p><strong>Date: </strong>{{ order.created_at.strftime('%b %d,  %Y %I:%M %p')}}</p>
+        </div>
+
+        <hr>
+
+        <table class="receipt-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ "%.2f"|format(item.price) }}</td>
+                    <td>${{ "%.2f"|format(item.subtotal) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+
+        <div class="receipt-summary">
+            <div class="total-line">
+                <span>Subtotal</span>
+                <span>${{ subtotal }}</span>
+            </div>
+            <div class="total-line">
+                <span>Sales Tax</span>
+                <span>${{ sales_tax }}</span>
+            </div>
+            <div class="total-line">
+                <span>Gratuity</span>
+                <span>${{ gratuity }}</span>
+            </div>
+            <hr>
+            <div class="total-line grand-total">
+                <span>Total</span>
+                <span>${{ total }}</span>
+            </div>
+        </div>
+
+        <hr>
+
+        {% if not order.finished %}
+        <form action="{{ url_for('dashboard.mark_paid', order_id=order.id) }}" class="paid-receipt-form">
+            <button type="submit" class="button--compact">Mark as Paid</button>
+        </form>
+        {% else %}
+        <p class="paid-label">✅ Paid</p>
+        {% endif %}
+    </div>
+{% endblock %}

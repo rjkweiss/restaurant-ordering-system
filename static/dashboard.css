@@ -1,13 +1,17 @@
 .dashboard-section {
-    width: 100%;
-    max-width: 1200px;
     margin: 2rem 0;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.dashboard-section a {
+    text-decoration: none;
 }
 
 .dashboard-section h1,
 .dashboard-section h2 {
-    margin-bottom: 1rem;
     color: #2c3e50;
+    margin-bottom: 1rem;
 }
 
 .dashboard-section form {
@@ -16,67 +20,62 @@
 
 }
 
-.dashboard-section button {
-    border-color: #457f74;
-    border-style: solid;
-}
-
 .dashboard-section table {
-    width: 100%;
     border-collapse: collapse;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .dashboard-section th,
 .dashboard-section td {
-    padding: 0.75rem 1rem;
     border-bottom: 1px solid #457f74;
+    padding: 0.75rem 1rem;
     text-align: left;
 }
 
 .dashboard-header {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
+    display: flex;
     gap: 10px;
+    justify-content: space-between;
+    margin: 2.5rem 0 10% 0;
     padding: 2.5rem auto;
     width: 100%;
-    margin: 2.5rem 0 10% 0;
 }
 
 .dashboard-assign-form {
-    display: flex;
-    flex-wrap: nowrap;
     align-items: center;
-    gap: 1rem;
     background-color: #f6f6f6;
     box-shadow: none;
-    width: 60%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
     padding: 5px 20px;
+    width: 60%;
 }
 
 /* Styled select fields */
 .select-field {
-    padding: 0.5rem 1rem;
+    background-color: #f1f3f5;
     border: 1px solid #457f74;
     border-radius: 6px;
-    background-color: #f1f3f5;
+    color: #444;
     font-family: "Delius", cursive;
     font-size: 1rem;
-    color: #444;
+    padding: 0.5rem 1rem;
     width: 100%;
 }
 
 /* Assign button */
 .button--primary {
     background-color: #007bff;
-    color: white;
-    font-weight: bold;
-    padding: 0.65rem 1.5rem;
     border: none;
     border-radius: 6px;
+    color: white;
     cursor: pointer;
+    font-weight: bold;
     max-width: 150px;
+    padding: 0.65rem 1.5rem;
 }
 
 .button--primary:hover {
@@ -86,12 +85,12 @@
 /* Logout button */
 .button--logout {
     background-color: #f96815;
-    color: white;
-    padding: 0.65rem 1.5rem;
     border: none;
-    font-weight: bold;
     border-radius: 6px;
+    color: white;
     cursor: pointer;
+    font-weight: bold;
+    padding: 0.65rem 1.5rem;
 }
 
 .button--logout:hover {
@@ -100,19 +99,20 @@
 
 .dashboard-body {
     display: flex;
-    justify-content: space-between;
     gap: 5rem;
+    justify-content: space-between;
     margin-top: 2.5rem;
 }
 
 .button--compact {
-    width: auto;
-    padding: 0.4rem 1rem;
-    font-size: 1rem;
     background-color: #f1f3f5;
-    color: #444;
+    border: 2px solid #457f74;
     border-radius: 6px;
+    color: #444;
     cursor: pointer;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    width: auto;
 }
 
 .button--compact:hover {
@@ -121,9 +121,9 @@
 }
 
 .order-actions {
+    align-items: center;
     display: flex;
     gap: 0.5rem;
-    align-items: center;
     justify-content: flex-start;
 }
 
@@ -139,62 +139,133 @@
     text-align: center;
 }
 
-.menu-section h3 {
+.menu-section h3, .menu-group {
     margin-bottom: 0.5rem;
 }
 
-.menu-group {
-    margin-bottom: 1.5rem;
-}
-
 .checkbox-grid {
+    align-items: start;
+    column-gap: 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
     margin-bottom: 2rem;
-    align-items: start;
 }
 
 .checkbox-grid label {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.5rem 0rem;
     border-radius: 8px;
+    display: flex;
     font-size: 1rem;
     line-height: 1.3;
+    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 0.5rem 0rem;
     white-space: nowrap;
 }
 
 .checkbox-grid input[type='checkbox'] {
-    transform: scale(1.4);
     accent-color: #007bff;
-    cursor: pointer;
     border-radius: 16px;
-    width: 18px;
+    cursor: pointer;
     height: 18px;
+    transform: scale(1.4);
+    width: 18px;
 }
 
 .qty {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     gap: 0.25rem;
+    justify-content: center;
     margin-left: auto;
     margin-top: 1rem;
 }
 
 .qty-input {
+    background-color: #f1f3f5;
     border: 1px solid #457f74;
     border-radius: 4px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #457f74;
+    height: 1.5rem;
     font-size: 1rem;
+    line-height: 1.5rem;
     padding: 0.25rem;
     text-align: center;
-    height: 1.5rem;
     width: 3rem;
-    line-height: 1.5rem;
-    background-color: #f1f3f5;
-    color: #457f74;
+}
+
+/* receipt table styles */
+.receipt-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    font-family: 'Quicksand', sans-serif;
+    margin: 3rem auto;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.receipt-header {
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+.receipt-table {
+    border-collapse: collapse;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.receipt-table th,
+.receipt-table td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+
+.receipt-table th {
+    border-bottom: 1px dashed #457f74;
+    font-weight: 600;
+}
+
+.receipt-container hr {
+    border: none;
+    border-top: 1px dashed #457f74;
+    margin: 1.5rem 0;
+}
+
+.paid-receipt-form {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #fff;
+    box-shadow: none;
+    margin-bottom: 2rem;
+}
+
+.receipt-summary {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.total-line {
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+}
+
+.grand-total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    text-transform: uppercase;
+}
+
+.paid-receipt-form button {
+    background-color: #457f74;
+    border: none;
+    color: #f1f3f5;
 }

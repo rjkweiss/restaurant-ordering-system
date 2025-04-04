@@ -17,7 +17,7 @@ class MultiCheckboxField(SelectMultipleField):
 class LoginForm(FlaskForm):
     employee_number = StringField('Employee number', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    submit = SubmitField('Sign In')
 
 class NewOrderForm(FlaskForm):
     employee_id = SelectField('Employee', coerce=int, validators=[DataRequired()])

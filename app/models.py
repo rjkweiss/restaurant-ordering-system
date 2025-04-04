@@ -1,5 +1,7 @@
+# from datetime import datetime
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 from werkzeug.security import check_password_hash, generate_password_hash
 
 db = SQLAlchemy()
@@ -80,6 +82,7 @@ class Order(db.Model):
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'), nullable=False)
     table_id = db.Column(db.Integer, db.ForeignKey('tables.id'), nullable=False)
     finished = db.Column(db.Boolean, nullable=False, default=False)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     # relationships
     employee = db.relationship("Employee", back_populates="orders")
