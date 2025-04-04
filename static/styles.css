@@ -27,6 +27,13 @@ body {
     width: auto;
 }
 
+.tag-line {
+    color: #4A5568;
+    font-family: "Dancing Script", cursive;
+    font-size: 24px;
+    font-weight: 500;
+}
+
 /* login form styling */
 
 
