@@ -1,9 +1,10 @@
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: "Delius", cursive;
     background-color: #f6f6f6;
 }
 
@@ -39,6 +40,7 @@ input[type='submit'] {
     color: white;
     border-radius: 8px;
     font-size: 1rem;
+    font-family: "Delius", cursive;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }

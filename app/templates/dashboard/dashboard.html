@@ -10,7 +10,7 @@
                 {{ form.submit(class="button--primary") }}
             </form>
 
-            <form method="post" action="{{ url_for('session.logout') }}">
+            <form method="post" action="{{ url_for('session.logout') }}" class="dashboard-logout-form">
                 <button type="submit" class="button--logout">Logout</button>
             </form>
         </div>
@@ -47,9 +47,9 @@
                     {% for category, items in items_by_type.items() %}
                     <div class="menu-group">
                         <h3>{{ category }}</h3>
-                        <div class="menu-items">
+                        <div class="checkbox-grid">
                             {% for item in items %}
-                                <label for="{{ item.name }}" class="menu-item">
+                                <label for="{{ item.name }}">
                                     <input type="checkbox" name="menu_items" id="{{ item.id }}" value="{{ item.id }}">
                                     {{ item.name }}
                                 </label>

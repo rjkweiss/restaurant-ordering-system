@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 from ..forms.forms import NewOrderForm
 from ..models import Employee, MenuItem, Order, OrderDetail, Table, db
@@ -9,6 +9,7 @@ from ..models import Employee, MenuItem, Order, OrderDetail, Table, db
 bp = Blueprint("dashboard", __name__, url_prefix="/dashboard")
 
 @bp.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     form = NewOrderForm()
 
@@ -39,7 +40,7 @@ def index():
     for item in MenuItem.query.all():
         items_by_type[item.type.name].append(item)
 
-    return render_template("dashboard.html", form=form, open_orders=open_orders, items_by_type=items_by_type)
+    return render_template("/dashboard/dashboard.html", form=form, open_orders=open_orders, items_by_type=items_by_type, title='Server dashboard')
 
 @bp.route("/add-to-order", methods=["POST"])
 def add_to_order():

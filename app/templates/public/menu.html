@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="menu-homepage">
+        <!-- add back link to dashboard if user is authenticated -->
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('dashboard.index') }}" class="back-link">Back to Dashboard</a>
+        {% endif %}
+
+        <!-- start of the menus -->
+        <h1>Welcome to Citrine</h1>
+        <p>Excellent Food that Just Happen to be Vegan</p>
+
+        {% for category, items in items_by_type.items() %}
+            <section class="menu-category">
+                <h2>{{ category.title() }}</h2>
+                <div class="menu-items">
+                    {% for item in items %}
+                        <div class="menu-card">
+                            <img src="{{ image_map.get(item.name, '/static/images/default.jpg') }}" alt="{{ item.name }}">
+                            <h3>{{ item.name }}</h3>
+                            <h5 class="description">{{ item.description }}</h5>
+                            <p class="price">${{ "%.2f"|format(item.price) }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
