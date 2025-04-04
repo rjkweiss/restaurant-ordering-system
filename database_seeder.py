@@ -66,8 +66,8 @@ with app.app_context():
         menu=dinner
     )
     roasted_heirloom_veggies = MenuItem(
-        name="Roasted Heirloom Veggies",
-        description="sea salt, rosemary",
+        name="Heirloom Veggies",
+        description="Roasted, sea salt, rosemary",
         price=21,
         type=appetizers,
         menu=dinner
@@ -87,7 +87,7 @@ with app.app_context():
         menu=dinner
     )
     grilled_housemade_focaccia = MenuItem(
-        name="Grilled Housemade Focaccia",
+        name="Housemade Focaccia",
         description="Rosemary, sea salt",
         price=17,
         type=appetizers,
@@ -96,14 +96,14 @@ with app.app_context():
 
     # entrees
     wild_mushroom_risotto = MenuItem(
-        name="Wild Mushroom Risotto",
+        name="Mushroom Risotto",
         description="creamy arborio rice, porcini & truffle oil",
         price=28,
         type=entrees,
         menu=dinner
     )
     charred_cauliflower_steak = MenuItem(
-        name="Charred Cauliflower Steak",
+        name="Cauliflower Steak",
         description="romesco sauce, pistachio dukkah",
         price=26.75,
         type=entrees,
@@ -117,14 +117,14 @@ with app.app_context():
         menu=dinner
     )
     king_oyster_scallops = MenuItem(
-        name="King Oyster Scallops",
+        name="Oyster Scallops",
         description="with saffron-coconut nage and crispy leeks",
         price=26,
         type=entrees,
         menu=dinner
     )
     stuffed_delicata_squash = MenuItem(
-        name="Stuffed Delicata Squash",
+        name="Delicata Squash",
         description="farro, cranberry, sage-almond drizzle",
         price=23,
         type=entrees,
@@ -140,7 +140,7 @@ with app.app_context():
 
     # beverages
     summer_mocktail = MenuItem(
-        name="Seasonal Summer Mocktail",
+        name="Summer Mocktail",
         description="red berries, lemonade, mint and cucumber",
         price=16,
         type=beverages,
@@ -161,8 +161,8 @@ with app.app_context():
         menu=dinner
     )
     matcha_oat_latte = MenuItem(
-        name="Matcha Oat Latte",
-        description="chilled",
+        name="Matcha Latte",
+        description="creamy oat, chilled",
         price=15,
         type=beverages,
         menu=dinner
@@ -175,8 +175,8 @@ with app.app_context():
         menu=dinner
     )
     artisan_sparkling_water = MenuItem(
-        name="Artisan Sparkling Water",
-        description="cucumber-mint",
+        name="Sparkling Water",
+        description="artisan cucumber-mint",
         price=17,
         type=beverages,
         menu=dinner

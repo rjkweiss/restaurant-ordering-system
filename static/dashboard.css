@@ -13,7 +13,12 @@
 .dashboard-section form {
     background-color: #f6f6f6;
     box-shadow: none;
-    padding: 5px 20px;
+
+}
+
+.dashboard-section button {
+    border-color: #457f74;
+    border-style: solid;
 }
 
 .dashboard-section table {
@@ -25,7 +30,7 @@
 .dashboard-section th,
 .dashboard-section td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #457f74;
     text-align: left;
 }
 
@@ -47,12 +52,13 @@
     background-color: #f6f6f6;
     box-shadow: none;
     width: 60%;
+    padding: 5px 20px;
 }
 
 /* Styled select fields */
 .select-field {
     padding: 0.5rem 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #457f74;
     border-radius: 6px;
     background-color: #f1f3f5;
     font-family: "Delius", cursive;
@@ -97,7 +103,6 @@
     justify-content: space-between;
     gap: 5rem;
     margin-top: 2.5rem;
-    padding: 2rem;
 }
 
 .button--compact {
@@ -107,7 +112,6 @@
     background-color: #f1f3f5;
     color: #444;
     border-radius: 6px;
-    border: 2px solid #ccc;
     cursor: pointer;
 }
 
@@ -123,15 +127,11 @@
     justify-content: flex-start;
 }
 
-.table-section {
-    width: 50%;
-}
-
 .menu-section {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    width: 35%;
+    gap: 1rem;
+    padding: 0;
 }
 
 .menu-section h2 {
@@ -150,8 +150,7 @@
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 1rem;
-    row-gap: 0.75rem;
+    column-gap: 2rem;
     margin-bottom: 2rem;
     align-items: start;
 }
@@ -159,8 +158,9 @@
 .checkbox-grid label {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0rem;
     border-radius: 8px;
     font-size: 1rem;
     line-height: 1.3;
@@ -174,4 +174,27 @@
     border-radius: 16px;
     width: 18px;
     height: 18px;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-left: auto;
+    margin-top: 1rem;
+}
+
+.qty-input {
+    border: 1px solid #457f74;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    height: 1.5rem;
+    width: 3rem;
+    line-height: 1.5rem;
+    background-color: #f1f3f5;
+    color: #457f74;
 }
